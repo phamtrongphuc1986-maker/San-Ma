@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Săn Mã — Coupon & Mã Giảm Giá Việt Nam, Thế Giới</title>
+<meta name="description" content="Tổng hợp coupon, giftcode, mã giảm giá đang còn hiệu lực của các sàn thương mại điện tử, app ăn uống, du lịch tại Việt Nam và quốc tế — kèm điều kiện dùng mã và hạn dùng rõ ràng.">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" sizes="192x192" href="https://gia.hialo.vn/anh-san-ma/icon-192.png">
+<link rel="apple-touch-icon" href="https://gia.hialo.vn/anh-san-ma/icon-512.png">
+<meta name="theme-color" content="#ee4d2d">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif; background: #fff7f2; color: #26292e; }
+  header { background: linear-gradient(135deg, #ee4d2d, #ff7337); color: #fff; padding: 18px 16px 14px; position: sticky; top: 0; z-index: 10; box-shadow: 0 2px 10px rgba(238,77,45,.35); }
+  .logo { font-size: 26px; font-weight: 800; letter-spacing: .5px; }
+  .logo small { display: block; font-size: 13px; font-weight: 500; opacity: .92; margin-top: 2px; }
+  .tim { margin-top: 12px; display: flex; gap: 8px; }
+  .tim input { flex: 1; padding: 11px 14px; border: none; border-radius: 10px; font-size: 16px; outline: none; }
+  .khuVuc { display: flex; gap: 8px; margin-top: 10px; }
+  .khuVuc button { flex: 1; padding: 8px 0; border-radius: 999px; border: 1.5px solid rgba(255,255,255,.75); background: transparent; color: #fff; font-size: 14px; font-weight: 600; cursor: pointer; }
+  .khuVuc button.dang { background: #fff; color: #ee4d2d; }
+  .nhomBar { display: flex; gap: 8px; overflow-x: auto; padding: 12px 12px 4px; scrollbar-width: none; }
+  .nhomBar::-webkit-scrollbar { display: none; }
+  .nhomBar button { white-space: nowrap; padding: 7px 13px; border-radius: 999px; border: 1.5px solid #ffd9cd; background: #fff; color: #555; font-size: 13.5px; font-weight: 600; cursor: pointer; }
+  .nhomBar button.dang { background: #ee4d2d; border-color: #ee4d2d; color: #fff; }
+  .ketQua { padding: 8px 16px 0; font-size: 13.5px; color: #888; }
+  main { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; padding: 12px; max-width: 1200px; margin: 0 auto; }
+  .the { background: #fff; border-radius: 14px; padding: 14px; box-shadow: 0 2px 8px rgba(0,0,0,.07); display: flex; flex-direction: column; gap: 9px; border: 1px solid #ffe4da; }
+  .theTren { display: flex; align-items: center; gap: 10px; }
+  .avatar { width: 46px; height: 46px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; font-size: 20px; flex-shrink: 0; }
+  .tenSan { font-size: 16.5px; font-weight: 700; }
+  .banGi { font-size: 13px; color: #777; margin-top: 1px; }
+  .huy { margin-left: auto; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 999px; background: #e8f5e9; color: #2e7d32; flex-shrink: 0; }
+  .huy.qt { background: #e3f2fd; color: #1565c0; }
+  .giam { font-size: 19px; font-weight: 800; color: #ee4d2d; line-height: 1.3; }
+  .dieuKien { list-style: none; font-size: 13.5px; color: #555; display: flex; flex-direction: column; gap: 3px; }
+  .dieuKien li::before { content: "✓ "; color: #43a047; font-weight: 700; }
+  .han { font-size: 12.5px; color: #888; }
+  .han sap { color: #d32f2f; font-weight: 700; }
+  .maHop { display: flex; gap: 8px; margin-top: auto; }
+  .maO { flex: 1; border: 1.8px dashed #ee4d2d; background: #fff4ef; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: "Courier New", monospace; font-weight: 700; font-size: 16.5px; letter-spacing: 1px; color: #d84315; padding: 9px 6px; word-break: break-all; text-align: center; }
+  .maO.khongMa { font-family: inherit; letter-spacing: 0; font-size: 13.5px; color: #888; border-color: #ccc; background: #fafafa; }
+  .nutChep { background: #ee4d2d; color: #fff; border: none; border-radius: 10px; padding: 0 16px; font-size: 14.5px; font-weight: 700; cursor: pointer; }
+  .nutChep:active { background: #d84315; }
+  .nutDung { display: block; text-align: center; background: #fff; color: #ee4d2d; border: 1.5px solid #ee4d2d; border-radius: 10px; padding: 9px; font-size: 14.5px; font-weight: 700; text-decoration: none; }
+  .trong { grid-column: 1 / -1; text-align: center; color: #999; padding: 40px 10px; font-size: 15px; }
+  footer { max-width: 1200px; margin: 0 auto; padding: 8px 16px 30px; font-size: 12.5px; color: #999; line-height: 1.6; }
+  #toast { position: fixed; left: 50%; bottom: 26px; transform: translateX(-50%) translateY(80px); background: #26292e; color: #fff; padding: 11px 20px; border-radius: 999px; font-size: 14.5px; font-weight: 600; opacity: 0; transition: all .3s ease; z-index: 99; pointer-events: none; }
+  #toast.hien { transform: translateX(-50%) translateY(0); opacity: 1; }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">🎟️ SĂN MÃ<small>Coupon • Giftcode • Mã giảm giá Việt Nam &amp; thế giới</small></div>
+  <div class="tim"><input id="oTim" type="search" placeholder="Tìm sàn, nhóm hàng hoặc mã… (vd: Shopee, du lịch)"></div>
+  <div class="khuVuc" id="khuVuc">
+    <button data-kv="" class="dang">Tất cả</button>
+    <button data-kv="VN">Việt Nam</button>
+    <button data-kv="QT">Quốc tế</button>
+  </div>
+</header>
+<div class="nhomBar" id="nhomBar"></div>
+<div class="ketQua" id="ketQua"></div>
+<main id="luoi"></main>
+<footer>
+  <p>Mã và ưu đãi được tổng hợp từ trang khuyến mãi chính thức của các nhà bán; điều kiện và hạn dùng có thể thay đổi theo từng chương trình — hãy kiểm tra lại trên trang của nhà bán trước khi thanh toán. Mã hết hạn sẽ tự ẩn khỏi danh sách.</p>
+</footer>
+<div id="toast"></div>
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script>if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(function(){});</script>
+</body>
+</html>
