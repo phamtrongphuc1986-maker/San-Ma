@@ -48,6 +48,31 @@
   footer { max-width: 1200px; margin: 0 auto; padding: 8px 16px 30px; font-size: 12.5px; color: #999; line-height: 1.6; }
   #toast { position: fixed; left: 50%; bottom: 26px; transform: translateX(-50%) translateY(80px); background: #26292e; color: #fff; padding: 11px 20px; border-radius: 999px; font-size: 14.5px; font-weight: 600; opacity: 0; transition: all .3s ease; z-index: 99; pointer-events: none; }
   #toast.hien { transform: translateX(-50%) translateY(0); opacity: 1; }
+  .maRieng { max-width: 1200px; margin: 6px auto 0; padding: 4px 12px 0; }
+  .maRieng h2 { font-size: 20px; color: #d84315; }
+  .maRieng .giaiThich { font-size: 13.5px; color: #777; margin: 4px 0 10px; line-height: 1.55; }
+  #maRiengList { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; }
+  .theMR { background: #fff; border: 1.5px solid #b39ddb; border-radius: 14px; padding: 14px; box-shadow: 0 2px 8px rgba(0,0,0,.06); display: flex; flex-direction: column; gap: 8px; }
+  .tenMR { font-size: 16.5px; font-weight: 700; }
+  .moTaMR { font-size: 13.5px; color: #666; line-height: 1.5; }
+  .giaMR { font-size: 18px; font-weight: 800; color: #6a1b9a; }
+  .conMR { font-size: 13px; font-weight: 600; color: #888; }
+  .nutMua { background: #6a1b9a; color: #fff; border: none; border-radius: 10px; padding: 11px; font-size: 15px; font-weight: 700; cursor: pointer; margin-top: auto; }
+  .nutMua:disabled { background: #bbb; cursor: default; }
+  .trongMR { grid-column: 1 / -1; color: #999; font-size: 14px; padding: 8px 2px; }
+  .nutTraDon { margin-top: 10px; background: #fff; color: #6a1b9a; border: 1.5px solid #6a1b9a; border-radius: 10px; padding: 9px 14px; font-size: 14px; font-weight: 700; cursor: pointer; }
+  #muaPanel { max-width: 560px; margin: 14px auto 0; }
+  .donMR { background: #fff; border: 1.5px solid #b39ddb; border-radius: 14px; padding: 16px; text-align: center; }
+  .donTieuDe { font-size: 15.5px; font-weight: 700; margin-bottom: 10px; }
+  .qrMR { width: 230px; max-width: 80%; border-radius: 10px; }
+  .donDong { font-size: 14px; color: #444; margin-top: 7px; line-height: 1.5; }
+  .noiDungMR { color: #d84315; letter-spacing: 1px; }
+  .donCho { margin-top: 12px; font-size: 13.5px; color: #888; line-height: 1.55; }
+  .choMR { text-align: center; color: #777; padding: 14px; }
+  .caoWrap { position: relative; height: 70px; border-radius: 12px; overflow: hidden; background: #faf3ff; border: 2px dashed #6a1b9a; margin: 6px 0 12px; }
+  .caoMa { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: "Courier New", monospace; font-weight: 700; font-size: 21px; letter-spacing: 1.5px; color: #4a148c; padding: 0 8px; word-break: break-all; text-align: center; }
+  .caoCanvas { position: absolute; inset: 0; touch-action: none; cursor: pointer; }
+  .caoChu { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 17px; color: #555; letter-spacing: 1px; pointer-events: none; text-shadow: 0 1px 0 #fff; }
 </style>
 </head>
 <body>
@@ -63,12 +88,22 @@
 <div class="nhomBar" id="nhomBar"></div>
 <div class="ketQua" id="ketQua"></div>
 <main id="luoi"></main>
+<section class="maRieng" id="mucMaRieng">
+  <h2>🛡️ Mã riêng của shop</h2>
+  <p class="giaiThich">Đây là các mã do <b>chính shop phát hành</b> (không phải mã khuyến mãi công khai ở trên). Mã được giữ kín trên máy chủ — bạn thanh toán bằng QR, hệ thống xác nhận tiền về rồi mới hiện mã cho riêng bạn cào xem.</p>
+  <div id="maRiengList"></div>
+  <div id="muaPanel" style="display:none"></div>
+</section>
 <footer>
   <p>Mã và ưu đãi được tổng hợp từ trang khuyến mãi chính thức của các nhà bán; điều kiện và hạn dùng có thể thay đổi theo từng chương trình — hãy kiểm tra lại trên trang của nhà bán trước khi thanh toán. Mã hết hạn sẽ tự ẩn khỏi danh sách.</p>
+<nav style="text-align:center;line-height:2;margin:10px 0 4px"><a href="gioi-thieu.html">Giới thiệu</a> · <a href="dieu-khoan-su-dung.html">Điều khoản sử dụng</a> · <a href="chinh-sach-bao-mat.html">Chính sách bảo mật</a> · <a href="thoa-thuan-nguoi-dung.html">Thỏa thuận người dùng</a> · <a href="chinh-sach-cookie.html">Chính sách cookie</a> · <a href="chinh-sach-ban-quyen.html">Chính sách bản quyền</a> · <a href="chinh-sach-thuong-hieu.html">Chính sách thương hiệu</a> · <a href="kiem-soat-khach.html">Kiểm soát khách</a> · <a href="nguyen-tac-cong-dong.html">Nguyên tắc cộng đồng</a> · <a href="tro-nang.html">Trợ năng</a></nav>
+<p style="text-align:center">© 2026 Săn Mã — sanma.hialo.vn. Mọi quyền được bảo lưu.</p>
+<p style="text-align:center;margin:8px 0"><a href="https://www.trustpilot.com/review/sanma.hialo.vn" target="_blank" rel="noopener" title="Đánh giá trên Trustpilot" style="display:inline-block;background:#00b67a;color:#fff;font-weight:700;padding:7px 12px;border-radius:6px;text-decoration:none;margin:6px 0 0 8px;vertical-align:middle">★ Trustpilot</a></p>
 </footer>
 <div id="toast"></div>
 <script src="data.js"></script>
 <script src="app.js"></script>
+<script src="shop.js"></script>
 <script>if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(function(){});</script>
 </body>
 </html>
